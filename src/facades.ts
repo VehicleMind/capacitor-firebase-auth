@@ -138,7 +138,7 @@ export const cfaSignInPhone = (phone: string, verificationCode?: string) : Obser
 			// web sign in
 			firebase.app().auth().signInWithCredential(credential)
 				.then((userCredential: firebase.auth.UserCredential) => {
-					observer.next(userCredential.user);
+					observer.next({user: userCredential.user, credential});
 					observer.complete();
 				})
 				.catch((reject: any) => observer.error(reject));

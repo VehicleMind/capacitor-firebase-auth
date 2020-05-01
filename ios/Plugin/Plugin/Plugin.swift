@@ -103,7 +103,7 @@ public class CapacitorFirebaseAuth: CAPPlugin {
                 return
             }
 
-            guard (authResult?.user) != nil else {
+            guard (authResult) != nil else {
                 print("There is no user on firebase AuthResult")
                 self.handleError(message: "There is no token in Facebook sign in.")
                 return
@@ -175,7 +175,7 @@ public class CapacitorFirebaseAuth: CAPPlugin {
             call.success()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
-            call.reject("Error signing out: %@", signOutError)
+            call.reject("Error signing out: \(signOutError)")
         }
     }
 }
